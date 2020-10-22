@@ -1,26 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
 
-function App() {
+import { DateSelector } from "./DateSelector";
+const App = () => {
+  const [date, setDate] = useState<Date | undefined>();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>Hello date selector</h1>
+      <DateSelector startYear={2016} setDate={setDate} />
+      <div>{`date : ${date?.toString()}`}</div>
+      <div>{`year : ${date?.getFullYear()}`}</div>
+      <div>{`month : ${date ? date.getMonth() + 1 : undefined}`}</div>
+      <div>{`day : ${date?.getDate()}`}</div>
+    </>
   );
-}
+};
 
 export default App;
